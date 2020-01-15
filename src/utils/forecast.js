@@ -17,10 +17,12 @@ const forecast = (lat, long, callback) => {
         }else if(body.error) {
             callback('Unable to find location', undefined)
         }else{   
+            console.log(body.daily)
             //to wywoluje moj callback z error jako undefined i data jako javascript obiect {result: ----string----}
             callback(undefined, {
                 result: body.daily.data[0].summary + " It is currently " + body.currently.apparentTemperature + " degrees out" +
-                " There is " + body.currently.precipProbability +"% chance of rain."
+                " There is " + body.currently.precipProbability +"% chance of rain. " + "Maksymalna temperatura wynosi" +
+                body.daily.data[0].temperatureMax + " Minimalna temperatura wynosi " + body.daily.data[0].temperatureMin
             })
 
             }  
